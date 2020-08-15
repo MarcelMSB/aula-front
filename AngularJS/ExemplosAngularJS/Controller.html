@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+<body>
+
+<div ng-app="MeuApp" ng-controller="pessoaCtrl">
+	Primeiro Nome: <input type="text" ng-model="primeiroNome"><br>
+	Segundo Nome: <input type="text" ng-model="segundoNome"><br>
+	<br>
+	Nome Completo: {{nomeCompleto()}}
+</div>
+
+<script>
+var app = angular.module('MeuApp', []);
+app.controller('pessoaCtrl', function($scope) {
+    $scope.primeiroNome = "";
+    $scope.segundoNome = "";
+    $scope.nomeCompleto = function() {
+        return $scope.primeiroNome + " " + $scope.segundoNome;
+    };
+});
+</script>
+
+</body>
+</html>

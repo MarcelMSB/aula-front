@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+	<title>Título da página</title>
+<script type="text/javascript">		
+	function contaBancaria() {
+		this.saldo = 0;
+		this.limite = -200;
+	}
+	contaBancaria.prototype.deposito = function(valor) {
+		this.saldo = this.saldo + parseFloat(valor);		
+		objDemonstra.demonstra(this.saldo);
+	}
+	contaBancaria.prototype.saque = function(valor) {
+		if (this.saldo-parseFloat(valor) >= this.limite) {
+			this.saldo = this.saldo - parseFloat(valor);
+			objDemonstra.demonstra(this.saldo);
+		} else {
+			alert("Não tem saldo");
+		}
+	}
+	function demonstraSaldo(){}
+	demonstraSaldo.prototype.demonstra = function(valor) {		
+		document.getElementById("saldo").value = valor;
+		document.getElementById("valor").value = 0;
+	}	
+	var conta = new contaBancaria();	
+	var objDemonstra = new demonstraSaldo();
+	window.onload = function() {		
+		document.getElementById("sacar").onclick = function() {		
+			conta.saque(document.getElementById("valor").value);
+		}			
+		document.getElementById("depositar").onclick = function() {		
+			conta.deposito(document.getElementById("valor").value);
+		}					
+	}
+</script>
+</head>
+<body>
+ 	<table>
+		<tr>
+			<td>Valor:</td>
+			<td><input type="text" id="valor" name="valor"/></td>
+		</tr>
+		<tr>
+			<td>Saldo:</td>
+			<td><input type="text" id="saldo" name="saldo" disabled /></td>
+		</tr>	
+		<tr>
+			<td><button id="sacar" value="Calcular">Sacar</button></td>
+			<td><button id="depositar" value="Calcular">Depositar</button></td>
+		</tr>	
+	</table>
+</body>
+</html>
+
+
+

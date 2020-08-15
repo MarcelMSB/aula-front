@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+	<meta>
+	<title>Título da página</title>
+	<script src="conta.js"></script>	
+	<script type="text/javascript">		
+	window.onload = function() {		
+		$.getElementById("sacar").onclick = function() {		
+			conta.saque($.getElementById("valor").value);
+		}			
+		$.getElementById("depositar").onclick = function() {		
+			conta.deposito($.getElementById("valor").value);
+		}					
+	}
+</script>
+</head>
+<body>
+ 	<table>
+		<tr>
+			<td>Valor:</td>
+			<td><input type="number" step="0.2" id="valor" name="valor"/></td>
+		</tr>
+		<tr>
+			<td>Saldo:</td>
+			<td><div id="saldo"/>0</div></td>
+		</tr>	
+		<tr>
+			<td><button id="sacar" value="Calcular">Sacar</button></td>
+			<td><button id="depositar" value="Calcular">Depositar</button></td>
+		</tr>
+		<tr>
+			<td colspan=2><div id="mensagem"/>Efetue a operacao.</div></td>
+		</tr>
+		<tr>
+			<td colspan=2><div id="movimentacao"/></div></td>
+		</tr>				
+	</table>
+</body>
+</html>
+
+
+
